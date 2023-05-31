@@ -6,7 +6,10 @@ use App\Entity\Representation;
 use App\Form\RepresentationFormType;
 use App\Repository\RepresentationRepository;
 use App\Repository\RoomRepository;
+use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 use Symfony\Component\Routing\Annotation\Route;
@@ -32,7 +35,7 @@ class RepresentationController extends AbstractController
     }  
 
     #[Route('/add', name: 'representation_add', methods: ['GET'])]
-    public function add(): Response
+    public function add(Request $request, EntityManagerInterface $em): Response
     {
         $this->denyAccessUnlessGranted('ROLE_ADMIN');
 
@@ -48,7 +51,13 @@ class RepresentationController extends AbstractController
         $representation = new Representation();
 
         // On crée le formulaire
-        $representationForm = $this->createForm(RepresentationFormType::class, $representation);     
+        $representationForm = $this->createForm(RepresentationFormType::class, $representation);   
+        
+        //On traite la requête du formulaire
+
+        $representationForm->handleRequest($request);
+        //dd($representationForm);
+
         
 
         return $this->render('representation/add.html.twig', [

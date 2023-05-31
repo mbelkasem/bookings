@@ -1,7 +1,21 @@
-{{ form_start(representationForm) }}
-
-{{ form_row(representationForm.schedule) }}
-
-{{ form_end(representationForm) }}
-
-<button type="submit" class="btn btn-primary ">Submit</button>
+<form class="form">
+    {{ form_start(representationForm) }}
+  
+    <div class="form-group">
+      {{ form_row(representationForm.the_show, { 'attr': {'class': 'form-control'} }) }}
+    </div>
+  
+    <div class="form-group">
+      {{ form_row(representationForm.room, { 'attr': {'class': 'form-control'} }) }}
+    </div>
+  
+    <div class="form-group">
+      {{ form_row(representationForm.schedule, { 'attr': {'class': 'form-control'} }) }}
+    </div>
+  
+    <div style="margin-top: 150px;">
+      {{ form_end(representationForm) }}
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+  </form>
+  
