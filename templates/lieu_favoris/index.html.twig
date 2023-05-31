@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Lieux Favoris{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1>Lieux Favoris</h1>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>User</th>
+                    <th>Location</th>
+                    <th>Note</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% set sortedLieuxFavoris = lieuxfavoris|sort((a, b) => b.note - a.note) %}
+                {% for lieu in sortedLieuxFavoris %}
+                    <tr>
+                        <td><a href="{{ path('lieufavoris_show', { 'userlogin': lieu.getUser().login }) }}">{{ lieu.getUser().login }}</a></td>
+                        <td>{{ lieu.getLocation().slug }}</td>
+                        <td>{{ lieu.getNote }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

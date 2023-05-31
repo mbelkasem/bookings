@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %} {% block title %}Liste des représentations{%
+endblock %} {% block body %}
+<h1>Liste des {{ resource }}</h1>
+
+<ul>
+  {% for representation in representation %}
+  <li>
+    <a href="{{ path('representation_show', { id: representation.id }) }}">{{
+      representation.theShow.title
+    }}</a> : Date de Représentation: <datetime>{{ representation.schedule|date('d-m-Y H:i') }}</datetime>
+    
+  </li>
+  {% endfor %}
+</ul>
+{% endblock %}

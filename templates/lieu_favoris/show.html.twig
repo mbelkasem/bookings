@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}User Favorites{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1>Utilisateur: {{ user.lastname }}  {{user.firstname}}</h1>
+        <h3>Lieux favoris</h3>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Location</th>
+                    <th>Note</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% set sortedLieuxFavoris = lieuxfavoris|sort((a, b) => b.note - a.note) %}
+                {% for lieu in sortedLieuxFavoris %}
+                    <tr>
+                        <td>{{ lieu.location.slug }}</td>
+                        <td>{{ lieu.note }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

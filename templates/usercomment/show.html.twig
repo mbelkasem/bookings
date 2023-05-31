@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %} 
+{% block body %}
+    <h1 class="mb-4">Avis laissé pour {{ show.title }}</h1>
+
+    <h2>Commentaires de</h2>
+    <ul class="list-group">
+        {% for comment in userComments %}
+            <li class="list-group-item">
+                {% if comment is null %}
+                    <p class="text-muted">Pas de commentaire laissé</p>
+                {% else %}
+                    <p class="mb-1"><strong>{{ comment.user.firstname }} {{ comment.user.lastname }}</strong></p>
+                    <p class="mb-0">{{ comment.contenu }}</p>
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

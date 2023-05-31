@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>La liste des salles par lieu de spectacle: </h1>
+    <ul>
+        {% for location in locations %}
+            <li><a href="{{ path('show_room', { 'id': location.getId() }) }}">{{ location.getDesignation() }}</a></li>
+        {% endfor %}
+    </ul>
+{% endblock %}

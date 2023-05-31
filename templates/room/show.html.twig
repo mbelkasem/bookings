@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Salles de {{ location.designation }}</h1>
+    <ul>
+        {% for room in rooms %}
+            <li><strong>Nom de la salle:</strong>&nbsp;&nbsp;{{ room.name }} - <strong>Nbre de place:</strong>&nbsp;&nbsp; {{ room.seats }}</li>
+        {% endfor %}
+    </ul>
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Agent Details{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1>Les Artists de {{ agent.getName() }}</h1>        
+        <ul>
+            {% for artist in agent.getArtist() %}
+                <li>{{ artist.getFirstname() }} {{ artist.getLastname() }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}
