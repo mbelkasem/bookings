@@ -17,7 +17,7 @@ class RepresentationFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('schedule', options:[
+            ->add('schedule', null, [
                 'label' => 'Date et Heure',
             ])
             ->add('the_show', EntityType::class,[
@@ -28,6 +28,7 @@ class RepresentationFormType extends AbstractType
             ->add('room', EntityType::class, [
                 'class' => Room::class,
                 'choice_label' => 'name',
+                'label' => 'Nom Salles',
             ])
         ;
     }

@@ -62,7 +62,7 @@ class RoomFixtures extends Fixture implements DependentFixtureInterface
                     $room->setSeats($recordRooms['seats']);
                     $room->setLocation($location); 
                     $this->addReference($location->getDesignation().'-'.$recordRooms['name'], $room);
-                    //$this->addReference($recordRooms['name'], $room);
+                   
                     $manager->persist($room); 
                     
                 }              

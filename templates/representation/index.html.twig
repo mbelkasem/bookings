@@ -3,7 +3,7 @@ endblock %} {% block body %}
 <h1>Liste des {{ resource }}</h1>
 
 <ul>
-  {% for representation in representation %}
+  {% for representation in representations %}
   <li>
     <a href="{{ path('representation_show', { id: representation.id }) }}">{{
       representation.theShow.title
